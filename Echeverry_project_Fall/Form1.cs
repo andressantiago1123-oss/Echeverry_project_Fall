@@ -11,5 +11,10 @@ namespace Echeverry_project_Fall
         {
 
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
