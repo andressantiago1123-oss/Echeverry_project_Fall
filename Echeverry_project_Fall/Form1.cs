@@ -7,14 +7,21 @@ namespace Echeverry_project_Fall
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            txtTextInput.Clear();
+            txtNumericInput.Clear();
+            lstOut.Items.Clear();
+        }
+
+        private void btnCalculate_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
     }
 }
