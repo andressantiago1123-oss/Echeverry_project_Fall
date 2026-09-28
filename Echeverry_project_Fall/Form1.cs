@@ -16,7 +16,10 @@ namespace Echeverry_project_Fall
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
-
+            string GameName;
+            double GamePrice;
+            double salesTax;
+            double finalTotal;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
