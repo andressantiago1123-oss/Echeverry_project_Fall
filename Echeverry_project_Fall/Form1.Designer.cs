@@ -30,9 +30,9 @@
         {
             label1 = new Label();
             label2 = new Label();
-            txtTextInput = new TextBox();
+            txtGameName = new TextBox();
             label3 = new Label();
-            txtNumericInput = new TextBox();
+            txtGamePrice = new TextBox();
             lstOut = new ListBox();
             btnCalculate = new Button();
             btnDelete = new Button();
@@ -60,12 +60,12 @@
             label2.TabIndex = 1;
             label2.Text = "Game Name ";
             // 
-            // txtTextInput
+            // txtGameName
             // 
-            txtTextInput.Location = new Point(237, 111);
-            txtTextInput.Name = "txtTextInput";
-            txtTextInput.Size = new Size(144, 23);
-            txtTextInput.TabIndex = 2;
+            txtGameName.Location = new Point(237, 111);
+            txtGameName.Name = "txtGameName";
+            txtGameName.Size = new Size(144, 23);
+            txtGameName.TabIndex = 2;
             // 
             // label3
             // 
@@ -77,12 +77,12 @@
             label3.TabIndex = 3;
             label3.Text = "Game Price ";
             // 
-            // txtNumericInput
+            // txtGamePrice
             // 
-            txtNumericInput.Location = new Point(237, 179);
-            txtNumericInput.Name = "txtNumericInput";
-            txtNumericInput.Size = new Size(144, 23);
-            txtNumericInput.TabIndex = 4;
+            txtGamePrice.Location = new Point(237, 179);
+            txtGamePrice.Name = "txtGamePrice";
+            txtGamePrice.Size = new Size(144, 23);
+            txtGamePrice.TabIndex = 4;
             // 
             // lstOut
             // 
@@ -96,9 +96,9 @@
             // 
             btnCalculate.Location = new Point(57, 398);
             btnCalculate.Name = "btnCalculate";
-            btnCalculate.Size = new Size(75, 62);
+            btnCalculate.Size = new Size(75, 57);
             btnCalculate.TabIndex = 6;
-            btnCalculate.Text = "Calculate && &Display";
+            btnCalculate.Text = "&Calculate && Display";
             btnCalculate.UseVisualStyleBackColor = true;
             btnCalculate.Click += btnCalculate_Click;
             // 
@@ -118,7 +118,7 @@
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(75, 55);
             btnExit.TabIndex = 8;
-            btnExit.Text = "&Exit";
+            btnExit.Text = "E&xit";
             btnExit.UseVisualStyleBackColor = true;
             btnExit.Click += btnExit_Click;
             // 
@@ -131,9 +131,9 @@
             Controls.Add(btnDelete);
             Controls.Add(btnCalculate);
             Controls.Add(lstOut);
-            Controls.Add(txtNumericInput);
+            Controls.Add(txtGamePrice);
             Controls.Add(label3);
-            Controls.Add(txtTextInput);
+            Controls.Add(txtGameName);
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "Form1";
@@ -146,9 +146,9 @@
 
         private Label label1;
         private Label label2;
-        private TextBox txtTextInput;
+        private TextBox txtGameName;
         private Label label3;
-        private TextBox txtNumericInput;
+        private TextBox txtGamePrice;
         private ListBox lstOut;
         private Button btnCalculate;
         private Button btnDelete;
