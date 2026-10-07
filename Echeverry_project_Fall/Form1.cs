@@ -9,7 +9,7 @@ namespace Echeverry_project_Fall
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            txtGameName.Clear();
+            txtGameName.Clear(); 
             txtGamePrice.Clear();
             lstOut.Items.Clear();
 
@@ -26,10 +26,12 @@ namespace Echeverry_project_Fall
             GameName = txtGameName.Text;
             GamePrice = double.Parse(txtGamePrice.Text);
 
-            taxAmount = GamePrice * 0.08;
-            totalAmount = GamePrice + taxAmount;
+            VideoGame myGame = new VideoGame(GameName, GamePrice);
 
-            lstOut.Items.Add("Game: " + GameName + "| Price: " + GamePrice.ToString("C") + " | Tax: " + taxAmount.ToString("C") + " | Total: " + totalAmount.ToString("C"));
+            taxAmount = myGame.GamePrice * 0.08;
+            totalAmount = myGame.GamePrice + taxAmount;
+
+            lstOut.Items.Add("Game: " + myGame.GameName + "| Price: " + myGame.GamePrice.ToString("C") + " | Tax: " + taxAmount.ToString("C") + " | Total: " + totalAmount.ToString("C"));
 
             
         }
