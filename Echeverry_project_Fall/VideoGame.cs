@@ -16,7 +16,7 @@ namespace Echeverry_project_Fall
         public VideoGame(string name, double price)
         {
             GameName = name;
-            GamePrice = price;
+            GamePrice = price; 
         }
     }
 }
