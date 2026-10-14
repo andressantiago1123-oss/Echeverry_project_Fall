@@ -12,26 +12,19 @@ namespace Echeverry_project_Fall
             txtGameName.Clear(); 
             txtGamePrice.Clear();
             lstOut.Items.Clear();
-
             txtGameName.Focus();
         }
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
-            string GameName; 
-            double GamePrice;
-            double taxAmount;
-            double totalAmount;
-
-            GameName = txtGameName.Text;
-            GamePrice = double.Parse(txtGamePrice.Text);
-
+            string GameName = txtGameName.Text; 
+            double GamePrice = double.Parse(txtGamePrice.Text);
+            
             VideoGame myGame = new VideoGame(GameName, GamePrice);
 
-            taxAmount = myGame.GamePrice * 0.08;
-            totalAmount = myGame.GamePrice + taxAmount;
+            myGame.CalculateTotals();
 
-            lstOut.Items.Add("Game: " + myGame.GameName + "| Price: " + myGame.GamePrice.ToString("C") + " | Tax: " + taxAmount.ToString("C") + " | Total: " + totalAmount.ToString("C"));
+            lstOut.Items.Add(myGame.ToString());
 
             
         }
