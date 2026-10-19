@@ -17,16 +17,23 @@ namespace Echeverry_project_Fall
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
-            string GameName = txtGameName.Text; 
-            double GamePrice = double.Parse(txtGamePrice.Text);
-            
-            VideoGame myGame = new VideoGame(GameName, GamePrice);
+            VideoGame myGame = new VideoGame();
+
+            myGame.GameName = txtGameName.Text;
+            myGame.GamePrice = double.Parse(txtGamePrice.Text);
 
             myGame.CalculateTotals();
 
-            lstOut.Items.Add(myGame.ToString());
+            lstOut.Items.Clear();
 
-            
+            string[] lines = myGame.ToString().Split(new string[] { "\r\n" }, StringSplitOptions.None);
+
+            foreach (string line in lines)
+            {
+                lstOut.Items.Add(line);
+            }
+        
+
         }
 
         private void btnExit_Click(object sender, EventArgs e)

@@ -46,9 +46,9 @@
             label1.ForeColor = Color.FromArgb(0, 192, 192);
             label1.Location = new Point(237, 32);
             label1.Name = "label1";
-            label1.Size = new Size(275, 25);
+            label1.Size = new Size(280, 25);
             label1.TabIndex = 0;
-            label1.Text = "VideoGame Transaction Form";
+            label1.Text = "Video Game Transaction Form";
             // 
             // label2
             // 
@@ -91,6 +91,7 @@
             lstOut.Name = "lstOut";
             lstOut.Size = new Size(455, 124);
             lstOut.TabIndex = 5;
+            lstOut.TabStop = false;
             // 
             // btnCalculate
             // 
@@ -108,7 +109,7 @@
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(75, 57);
             btnDelete.TabIndex = 7;
-            btnDelete.Text = "&Delete";
+            btnDelete.Text = "&Clear";
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
             // 

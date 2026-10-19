@@ -5,6 +5,8 @@ namespace Echeverry_project_Fall
 {
     public class VideoGame
     {
+        private double taxRate = 0.08; 
+
         public string GameName { get; set; }
         public double GamePrice { get; set; }
         public double TaxAmount { get; set; }
@@ -26,16 +28,17 @@ namespace Echeverry_project_Fall
 
         public void CalculateTotals()
             {
-                TaxAmount = GamePrice * 0.08;
+                TaxAmount = GamePrice * taxRate;
                 TotalAmount = GamePrice + TaxAmount;
             }
 
         public override string ToString()
         {
-            return "Game: " + GameName +
-                " | Price: " + GamePrice.ToString("C") +
-                " | Tax: " + TaxAmount.ToString("C") +
-                " | Total: " + TotalAmount.ToString("C");
+            return "Game Name: " + GameName + "\r\n" +
+                "Price: " + GamePrice.ToString("C") + "\r\n" +
+                "Tax Rate: " + taxRate.ToString("P0") + "\r\n" +
+                "Tax Amount: " + TaxAmount.ToString("C") + "\r\n" +
+                "Total: " + TotalAmount.ToString("C");
 
         }
       }
