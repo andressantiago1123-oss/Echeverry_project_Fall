@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Security.Cryptography.X509Certificates;
-
 namespace Echeverry_project_Fall
 {
     public class VideoGame
