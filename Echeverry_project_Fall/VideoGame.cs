@@ -3,7 +3,7 @@ namespace Echeverry_project_Fall
 {
     public class VideoGame
     {
-        private double taxRate = 0.08; 
+        public double taxRate { get; set; } = 0.08; 
 
         public string GameName { get; set; }
         public double GamePrice { get; set; }
@@ -22,6 +22,8 @@ namespace Echeverry_project_Fall
         {
             GameName = name;
             GamePrice = price;
+
+            CalculateTotals();
         }
 
         public void CalculateTotals()
