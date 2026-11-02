@@ -2,6 +2,7 @@ namespace Echeverry_project_Fall
 {
     public partial class Form1 : Form
     {
+        private VideoGame? myGame;
         public Form1()
         {
             InitializeComponent();
@@ -26,7 +27,7 @@ namespace Echeverry_project_Fall
             {
                 string name = txtGameName.Text;
 
-                VideoGame myGame = new VideoGame(name, price);
+                 myGame = new VideoGame(name, price);
 
                 lstOut.Items.Add("Game Name: " + myGame.GameName);
                 lstOut.Items.Add("Price: " + myGame.GamePrice.ToString("C"));
