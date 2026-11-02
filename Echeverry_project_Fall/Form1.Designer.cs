@@ -37,6 +37,11 @@
             btnCalculate = new Button();
             btnDelete = new Button();
             btnExit = new Button();
+            groupBox1 = new GroupBox();
+            radPC = new RadioButton();
+            radPlayStation = new RadioButton();
+            radXbox = new RadioButton();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -123,11 +128,60 @@
             btnExit.UseVisualStyleBackColor = true;
             btnExit.Click += btnExit_Click;
             // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(radPC);
+            groupBox1.Controls.Add(radPlayStation);
+            groupBox1.Controls.Add(radXbox);
+            groupBox1.Location = new Point(650, 190);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(114, 172);
+            groupBox1.TabIndex = 9;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Select Platform";
+            // 
+            // radPC
+            // 
+            radPC.AutoSize = true;
+            radPC.Location = new Point(14, 108);
+            radPC.Name = "radPC";
+            radPC.Size = new Size(40, 19);
+            radPC.TabIndex = 2;
+            radPC.TabStop = true;
+            radPC.Text = "PC";
+            radPC.UseVisualStyleBackColor = true;
+            radPC.CheckedChanged += radPC_CheckedChanged;
+            // 
+            // radPlayStation
+            // 
+            radPlayStation.AutoSize = true;
+            radPlayStation.Location = new Point(14, 73);
+            radPlayStation.Name = "radPlayStation";
+            radPlayStation.Size = new Size(84, 19);
+            radPlayStation.TabIndex = 1;
+            radPlayStation.TabStop = true;
+            radPlayStation.Text = "PlayStation";
+            radPlayStation.UseVisualStyleBackColor = true;
+            radPlayStation.CheckedChanged += radPlayStation_CheckedChanged;
+            // 
+            // radXbox
+            // 
+            radXbox.AutoSize = true;
+            radXbox.Location = new Point(14, 32);
+            radXbox.Name = "radXbox";
+            radXbox.Size = new Size(52, 19);
+            radXbox.TabIndex = 0;
+            radXbox.TabStop = true;
+            radXbox.Text = "Xbox";
+            radXbox.UseVisualStyleBackColor = true;
+            radXbox.CheckedChanged += radXbox_CheckedChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 505);
+            Controls.Add(groupBox1);
             Controls.Add(btnExit);
             Controls.Add(btnDelete);
             Controls.Add(btnCalculate);
@@ -139,6 +193,9 @@
             Controls.Add(label1);
             Name = "Form1";
             Text = "Echeverry_Project_Fall";
+            Load += Form1_Load;
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -154,5 +211,9 @@
         private Button btnCalculate;
         private Button btnDelete;
         private Button btnExit;
+        private GroupBox groupBox1;
+        private RadioButton radPC;
+        private RadioButton radPlayStation;
+        private RadioButton radXbox;
     }
 }
