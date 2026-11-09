@@ -2,11 +2,9 @@ namespace Echeverry_project_Fall
 {
     public partial class Form1 : Form
     {
-        private VideoGame? myGame;
+        private VideoGame myGame;
         private string selectedPlatform = "Xbox";
-        private const string XBOX_CHOICE = "Xbox";
-        private const string PLAYSTATION_CHOICE = "PlayStation";
-        private const string PC_CHOICE = "PC";
+        
         public Form1()
         {
             InitializeComponent();
@@ -31,23 +29,7 @@ namespace Echeverry_project_Fall
             {
                 string name = txtGameName.Text;
 
-                myGame = new VideoGame(name, price);
-
-                switch (selectedPlatform)
-                {
-                    case XBOX_CHOICE:
-                        myGame.taxRate = 0.05;
-                        break;
-                    case PLAYSTATION_CHOICE:
-                        myGame.taxRate = 0.06;
-                        break;
-                    case PC_CHOICE:
-                        myGame.taxRate = 0.00;
-                        break;
-                    default:
-                        myGame.taxRate = 0.05;
-                        break;
-                }
+                myGame = new VideoGame(name, price, selectedPlatform);
 
                 myGame.CalculateTotals();
 
@@ -84,7 +66,7 @@ namespace Echeverry_project_Fall
         {
             if (radXbox.Checked)
             {
-                selectedPlatform = XBOX_CHOICE;
+                selectedPlatform = VideoGame.XBOX_CHOICE;
             }
         }
 
@@ -92,7 +74,7 @@ namespace Echeverry_project_Fall
         {
             if (radPlayStation.Checked)
             {
-                selectedPlatform = PLAYSTATION_CHOICE;
+                selectedPlatform = VideoGame.PLAYSTATION_CHOICE;
             }
         }
 
@@ -100,7 +82,7 @@ namespace Echeverry_project_Fall
         {
             if (radPC.Checked)
             {
-                selectedPlatform = PC_CHOICE;
+                selectedPlatform = VideoGame.PC_CHOICE;
             }
         }
     }
