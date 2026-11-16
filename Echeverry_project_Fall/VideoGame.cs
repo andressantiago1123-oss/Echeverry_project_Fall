@@ -9,6 +9,7 @@ namespace Echeverry_project_Fall
 
         public double taxRate { get; set; } 
         public string GameName { get; set; }
+        public string Platform { get; set; }
         public double GamePrice { get; set; }
         public double TaxAmount { get; set; }
         public double TotalAmount { get; set; }
@@ -16,6 +17,7 @@ namespace Echeverry_project_Fall
         public VideoGame()
         {
             GameName = "";
+            Platform = "";
             GamePrice = 0.0;
             TaxAmount = 0.0;
             TotalAmount = 0.0;
@@ -24,6 +26,7 @@ namespace Echeverry_project_Fall
         public VideoGame(string name, double price, string platform)
         {
             GameName = name;
+            Platform = platform;
             GamePrice = price;
 
             switch (platform)
@@ -54,10 +57,11 @@ namespace Echeverry_project_Fall
 
         public override string ToString()
         {
-            return "Game Name: " + GameName + "\r\n" +
-                "Price: " + GamePrice.ToString("C") + "\r\n" +
-                "Tax Rate: " + taxRate.ToString("P0") + "\r\n" +
-                "Tax Amount: " + TaxAmount.ToString("C") + "\r\n" +
+            return "Game Name: " + GameName + Environment.NewLine +
+                "Platform: " + Platform + Environment.NewLine + 
+                "Price: " + GamePrice.ToString("C") + Environment.NewLine +
+                "Tax Rate: " + taxRate.ToString("P0") + Environment.NewLine +
+                "Tax Amount: " + TaxAmount.ToString("C") + Environment.NewLine +
                 "Total: " + TotalAmount.ToString("C");
 
         }
