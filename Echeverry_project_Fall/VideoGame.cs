@@ -7,6 +7,10 @@ namespace Echeverry_project_Fall
         public const string PLAYSTATION_CHOICE = "PlayStation";
         public const string PC_CHOICE = "PC";
 
+        public static double xboxTaxRate = 0.05;
+        public static double playstationTaxRate = 0.06;
+        public static double pcTaxRate = 0.08;
+
         public double taxRate { get; set; } 
         public string GameName { get; set; }
         public string Platform { get; set; }
@@ -28,32 +32,32 @@ namespace Echeverry_project_Fall
             GameName = name;
             Platform = platform;
             GamePrice = price;
-
-            switch (platform)
-            {
-                case XBOX_CHOICE:
-                    taxRate = 0.05;
-                    break;
-                case PLAYSTATION_CHOICE:
-                    taxRate = 0.06;
-                    break;
-                case PC_CHOICE:
-                    taxRate = 0.00;
-                    break;
-                default:
-                    taxRate = 0.05;
-                    break;
-
-            }
-           
             CalculateTotals();
         }
 
+
         public void CalculateTotals()
             {
-                TaxAmount = GamePrice * taxRate;
-                TotalAmount = GamePrice + TaxAmount;
+            switch (Platform)
+            {
+                case XBOX_CHOICE:
+                    taxRate = xboxTaxRate;
+                    break;
+                case PLAYSTATION_CHOICE:
+                    taxRate = playstationTaxRate;
+                    break;
+                case PC_CHOICE:
+                    taxRate = pcTaxRate;
+                    break;
+                default:
+                    taxRate = xboxTaxRate;
+                    break;
             }
+
+            TaxAmount = GamePrice * taxRate;
+            TotalAmount = GamePrice + TaxAmount;
+            }
+
 
         public override string ToString()
         {

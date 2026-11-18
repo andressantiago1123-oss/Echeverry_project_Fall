@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices.ObjectiveC;
+
 namespace Echeverry_project_Fall
 {
     public partial class Form1 : Form
@@ -6,23 +8,93 @@ namespace Echeverry_project_Fall
         private string selectedPlatform = "Xbox";
 
         private string fileName = "transactions.txt";
+        private string configFileName = "";
         
         public Form1()
         {
             InitializeComponent();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            radXbox.Checked = true;
+            ReadConfigFile();
+        }
+
+        private void ReadConfigFile()
+        {
+            OpenFileDialog openDialog = new OpenFileDialog();
+            openDialog.Title = "Select Configuration File";
+            openDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+
+            if (openDialog.ShowDialog() == DialogResult.OK)
+            {
+                configFileName = openDialog.FileName;
+                StreamReader inputFile = null;
+
+                try
+                {
+                    inputFile = new StreamReader(configFileName);
+                    string line = "";
+                    int count = 0;
+
+                    do
+                    {
+                        line = inputFile.ReadLine();
+
+                        if (line != null)
+                        {
+                            double rate = double.Parse(line);
+
+                            if (count == 0)
+                            {
+                                VideoGame.xboxTaxRate = rate;
+                            }
+                            else if (count == 1)
+                            {
+                                VideoGame.playstationTaxRate = rate;
+                            }
+                            else if (count == 2)
+                            {
+                                VideoGame.pcTaxRate = rate;
+                            }
+                            count++;
+                         
+                        }
+                    } while (line != null);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error reading configuration file: " + ex.Message,
+                                    "File Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    if (inputFile != null)
+                    {
+                        inputFile.Close();
+                    }
+                }
+            }
+        }
+
+      
+   
+        
+
         private void btnDelete_Click(object sender, EventArgs e)
         {
             txtGameName.Clear();
             txtGamePrice.Clear();
             lstOut.Items.Clear();
+
+            radXbox.Checked = true;
             txtGameName.Focus();
         }
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
-            lstOut.Items.Clear();
+           
 
             double price = 0.0;
             bool isPriceValid = double.TryParse(txtGamePrice.Text, out price);
@@ -50,6 +122,7 @@ namespace Echeverry_project_Fall
             {
                 lstOut.Items.Add(line);
             }
+            lstOut.Items.Add("-----------------------------------------");
             
             StreamWriter outputFile = new StreamWriter(fileName, true);
             outputFile.WriteLine("----- NEW TRANSACTION (" + DateTime.Now.ToString() + ") -----");
@@ -70,11 +143,6 @@ namespace Echeverry_project_Fall
                 this.Close();
             }
 
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            radXbox.Checked = true;
         }
 
         private void radXbox_CheckedChanged(object sender, EventArgs e)
