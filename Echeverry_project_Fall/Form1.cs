@@ -8,7 +8,7 @@ namespace Echeverry_project_Fall
         private string selectedPlatform = "Xbox";
 
         private string fileName = "transactions.txt";
-        private string configFileName = "";
+        private string configFileName = "config.txt";
         
         public Form1()
         {
@@ -23,50 +23,33 @@ namespace Echeverry_project_Fall
 
         private void ReadConfigFile()
         {
-            OpenFileDialog openDialog = new OpenFileDialog();
-            openDialog.Title = "Select Configuration File";
-            openDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+            StreamReader inputFile = null;
+            bool fileSuccess = false;
 
-            if (openDialog.ShowDialog() == DialogResult.OK)
+            do
             {
-                configFileName = openDialog.FileName;
-                StreamReader inputFile = null;
-
                 try
                 {
                     inputFile = new StreamReader(configFileName);
-                    string line = "";
-                    int count = 0;
 
-                    do
-                    {
-                        line = inputFile.ReadLine();
+                    VideoGame.xboxTaxRate = double.Parse(inputFile.ReadLine());
+                    VideoGame.playstationTaxRate = double.Parse(inputFile.ReadLine());
+                    VideoGame.pcTaxRate = double.Parse(inputFile.ReadLine());
 
-                        if (line != null)
-                        {
-                            double rate = double.Parse(line);
-
-                            if (count == 0)
-                            {
-                                VideoGame.xboxTaxRate = rate;
-                            }
-                            else if (count == 1)
-                            {
-                                VideoGame.playstationTaxRate = rate;
-                            }
-                            else if (count == 2)
-                            {
-                                VideoGame.pcTaxRate = rate;
-                            }
-                            count++;
-                         
-                        }
-                    } while (line != null);
+                    fileSuccess = true;
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error reading configuration file: " + ex.Message,
-                                    "File Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    lstOut.Items.Add("Error reading configuration file: " + ex.Message);
+
+                    if (openFileDialog1.ShowDialog() = DialogResult.OK)
+                    {
+                        configFileName = openFileDialog1.FileName;
+                    }
+                    else
+                    {
+                        fileSuccess = true;
+                    }
                 }
                 finally
                 {
@@ -75,7 +58,7 @@ namespace Echeverry_project_Fall
                         inputFile.Close();
                     }
                 }
-            }
+            } while (fileSuccess == false);
         }
 
       
@@ -105,8 +88,6 @@ namespace Echeverry_project_Fall
 
                 myGame = new VideoGame(name, price, selectedPlatform);
 
-                myGame.CalculateTotals();
-
                 DisplayAndSaveTransactionToFile();
 
             }
@@ -117,7 +98,9 @@ namespace Echeverry_project_Fall
         }
          private void DisplayAndSaveTransactionToFile()
         {
-            string[] lines = myGame.ToString().Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+            string output = myGame.ToString();
+            string[] lines = output.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+
             foreach (string line in lines)
             {
                 lstOut.Items.Add(line);
@@ -126,7 +109,7 @@ namespace Echeverry_project_Fall
             
             StreamWriter outputFile = new StreamWriter(fileName, true);
             outputFile.WriteLine("----- NEW TRANSACTION (" + DateTime.Now.ToString() + ") -----");
-            outputFile.WriteLine(myGame.ToString());
+            outputFile.WriteLine(output);
             outputFile.WriteLine();
             outputFile.Close();
         }
@@ -136,13 +119,7 @@ namespace Echeverry_project_Fall
         
         private void btnExit_Click(object sender, EventArgs e)
         {
-            DialogResult dialog = MessageBox.Show("Are you sure you want to exit?", "Quit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (dialog == DialogResult.Yes)
-            {
-                this.Close();
-            }
-
+            this.Close();
         }
 
         private void radXbox_CheckedChanged(object sender, EventArgs e)

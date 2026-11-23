@@ -41,6 +41,7 @@
             radPC = new RadioButton();
             radPlayStation = new RadioButton();
             radXbox = new RadioButton();
+            openFileDialog1 = new OpenFileDialog();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -176,6 +177,12 @@
             radXbox.UseVisualStyleBackColor = true;
             radXbox.CheckedChanged += radXbox_CheckedChanged;
             // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "config.txt";
+            openFileDialog1.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+            openFileDialog1.Title = "Select Configuration File";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -215,5 +222,6 @@
         private RadioButton radPC;
         private RadioButton radPlayStation;
         private RadioButton radXbox;
+        private OpenFileDialog openFileDialog1;
     }
 }
